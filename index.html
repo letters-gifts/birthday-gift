@@ -1,0 +1,2785 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Letters — Birthday</title>
+
+<style>
+
+/* =========================================================
+   FONTS
+========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap');
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+}
+
+body{
+    font-family:'Cairo',sans-serif;
+    overflow:hidden;
+    color:#633d3d;
+    background:#ded4c8;
+}
+
+
+/* =========================================================
+   APP
+========================================================= */
+
+.app{
+    width:100%;
+    height:100vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    position:relative;
+}
+
+.book{
+    width:min(100vw,470px);
+    height:min(100vh,900px);
+
+    position:relative;
+    overflow:hidden;
+
+    background:#f8f1e8;
+
+    box-shadow:
+        0 18px 55px rgba(70,45,38,.20);
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.page{
+    position:absolute;
+    inset:0;
+
+    opacity:0;
+    visibility:hidden;
+
+    transform:
+        translateX(24px)
+        scale(.985);
+
+    transition:
+        opacity .45s ease,
+        transform .55s cubic-bezier(.22,.61,.36,1),
+        visibility .45s;
+
+    overflow:hidden;
+}
+
+.page.active{
+    opacity:1;
+    visibility:visible;
+
+    transform:
+        translateX(0)
+        scale(1);
+}
+
+.page.leaving{
+    opacity:0;
+
+    transform:
+        translateX(-24px)
+        scale(.985);
+}
+
+
+/* =========================================================
+   PAGE BACKGROUNDS
+========================================================= */
+
+/* PAGE 1 — CELEBRATION */
+
+.page1{
+    background:
+        radial-gradient(
+            circle at 8% 12%,
+            rgba(255,255,255,.78) 0 2px,
+            transparent 3px
+        ),
+        radial-gradient(
+            circle at 20% 18%,
+            rgba(216,79,93,.12) 0 48px,
+            transparent 49px
+        ),
+        radial-gradient(
+            circle at 92% 72%,
+            rgba(231,200,79,.18) 0 85px,
+            transparent 86px
+        ),
+        radial-gradient(
+            circle at 12% 82%,
+            rgba(255,255,255,.55) 0 65px,
+            transparent 66px
+        ),
+        repeating-linear-gradient(
+            -35deg,
+            transparent 0 34px,
+            rgba(120,75,70,.035) 35px 36px
+        ),
+        linear-gradient(
+            145deg,
+            #f8eee3 0%,
+            #f2ddd8 48%,
+            #eadfcb 100%
+        );
+}
+
+
+/* PAGE 2 — LETTER / PAPER */
+
+.page2{
+    background:
+        linear-gradient(
+            90deg,
+            transparent 0 8%,
+            rgba(173,108,104,.055) 8% 8.3%,
+            transparent 8.3% 100%
+        ),
+        repeating-linear-gradient(
+            0deg,
+            transparent 0 38px,
+            rgba(130,90,80,.055) 39px 40px
+        ),
+        radial-gradient(
+            circle at 88% 13%,
+            rgba(232,202,84,.22) 0 52px,
+            transparent 53px
+        ),
+        radial-gradient(
+            circle at 12% 85%,
+            rgba(217,95,107,.11) 0 75px,
+            transparent 76px
+        ),
+        linear-gradient(
+            145deg,
+            #f8f1df,
+            #e9eee5 54%,
+            #f3ddd4
+        );
+}
+
+
+/* PAGE 3 — PINATA / PARTY */
+
+.page3{
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(255,255,255,.42) 0 135px,
+            transparent 136px
+        ),
+        radial-gradient(
+            circle at 14% 18%,
+            rgba(217,95,107,.16) 0 45px,
+            transparent 46px
+        ),
+        radial-gradient(
+            circle at 86% 20%,
+            rgba(232,202,84,.25) 0 55px,
+            transparent 56px
+        ),
+        radial-gradient(
+            circle at 18% 82%,
+            rgba(138,165,109,.17) 0 60px,
+            transparent 61px
+        ),
+        repeating-linear-gradient(
+            45deg,
+            transparent 0 18px,
+            rgba(117,82,75,.025) 19px 20px
+        ),
+        linear-gradient(
+            145deg,
+            #f9eee6,
+            #f0e8dc 48%,
+            #f5dfdf
+        );
+}
+
+
+/* PAGE 4 — TICKETS / SCRAPBOOK */
+
+.page4{
+    background:
+        linear-gradient(
+            110deg,
+            transparent 0 72%,
+            rgba(255,255,255,.24) 72% 83%,
+            transparent 83%
+        ),
+        radial-gradient(
+            circle at 12% 16%,
+            rgba(217,95,107,.14) 0 48px,
+            transparent 49px
+        ),
+        radial-gradient(
+            circle at 90% 76%,
+            rgba(232,202,84,.22) 0 75px,
+            transparent 76px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent 0 24px,
+            rgba(110,90,78,.025) 25px 26px
+        ),
+        repeating-linear-gradient(
+            0deg,
+            transparent 0 24px,
+            rgba(110,90,78,.025) 25px 26px
+        ),
+        linear-gradient(
+            150deg,
+            #f2eadf,
+            #e5ebe1 55%,
+            #eee0d5
+        );
+}
+
+
+/* PAGE 5 — GIFT */
+
+.page5{
+    background:
+        radial-gradient(
+            circle at 50% 56%,
+            rgba(255,255,255,.38) 0 155px,
+            transparent 156px
+        ),
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(217,95,107,.13) 0 58px,
+            transparent 59px
+        ),
+        radial-gradient(
+            circle at 88% 22%,
+            rgba(232,202,84,.23) 0 65px,
+            transparent 66px
+        ),
+        radial-gradient(
+            circle at 12% 86%,
+            rgba(138,165,109,.13) 0 70px,
+            transparent 71px
+        ),
+        repeating-linear-gradient(
+            -45deg,
+            transparent 0 40px,
+            rgba(120,80,72,.028) 41px 42px
+        ),
+        linear-gradient(
+            145deg,
+            #f8eee1,
+            #e9e8dd 54%,
+            #f0dcd4
+        );
+}
+
+
+/* PAGE 6 — FINAL */
+
+.page6{
+    background:
+        radial-gradient(
+            ellipse at 50% 38%,
+            rgba(255,255,255,.68) 0 170px,
+            transparent 171px
+        ),
+        radial-gradient(
+            circle at 8% 18%,
+            rgba(217,95,107,.11) 0 55px,
+            transparent 56px
+        ),
+        radial-gradient(
+            circle at 92% 18%,
+            rgba(232,202,84,.18) 0 58px,
+            transparent 59px
+        ),
+        radial-gradient(
+            circle at 80% 85%,
+            rgba(138,165,109,.12) 0 85px,
+            transparent 86px
+        ),
+        repeating-linear-gradient(
+            135deg,
+            transparent 0 32px,
+            rgba(120,80,72,.022) 33px 34px
+        ),
+        linear-gradient(
+            145deg,
+            #efe9df,
+            #f8f0e5 55%,
+            #e7e4da
+        );
+}
+
+
+/* =========================================================
+   DECORATIVE BACKGROUND DETAILS
+========================================================= */
+
+.page::before{
+    content:"";
+
+    position:absolute;
+
+    inset:11px;
+
+    border:
+        1px solid rgba(113,74,67,.10);
+
+    pointer-events:none;
+
+    z-index:1;
+}
+
+.page::after{
+    content:"";
+
+    position:absolute;
+
+    inset:22px;
+
+    pointer-events:none;
+
+    z-index:1;
+
+    opacity:.55;
+
+    background:
+        radial-gradient(
+            circle at 15% 15%,
+            rgba(255,255,255,.75) 0 1px,
+            transparent 2px
+        ),
+        radial-gradient(
+            circle at 82% 24%,
+            rgba(115,74,67,.16) 0 1px,
+            transparent 2px
+        ),
+        radial-gradient(
+            circle at 24% 72%,
+            rgba(115,74,67,.12) 0 1px,
+            transparent 2px
+        ),
+        radial-gradient(
+            circle at 76% 88%,
+            rgba(255,255,255,.75) 0 1px,
+            transparent 2px
+        );
+
+    background-size:
+        38px 38px,
+        52px 52px,
+        64px 64px,
+        47px 47px;
+}
+
+.page1::before{
+    border-style:solid;
+    border-color:rgba(157,71,76,.13);
+}
+
+.page2::before{
+    inset:18px 14px;
+
+    border-color:rgba(112,83,71,.13);
+    border-style:dashed;
+}
+
+.page3::before{
+    border-radius:45% 55% 48% 52%;
+    border-color:rgba(151,76,76,.10);
+}
+
+.page4::before{
+    inset:14px;
+
+    border-style:dashed;
+
+    border-color:rgba(107,91,75,.14);
+}
+
+.page5::before{
+    inset:16px;
+
+    border-radius:24px;
+
+    border-color:rgba(160,81,79,.11);
+}
+
+.page6::before{
+    inset:18px;
+
+    border-radius:50% 50% 42% 42%;
+
+    border-color:rgba(130,96,85,.09);
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo{
+    position:absolute;
+    top:20px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:50;
+    font-family:'DM Serif Display',serif;
+    font-size:23px;
+    letter-spacing:3px;
+    color:#734347;
+    white-space:nowrap;
+    background:transparent;
+    border:0;
+    box-shadow:none;
+    padding:0;
+}
+
+.logo::before,
+.logo::after{
+    content:"♡";
+    font-family:Arial,sans-serif;
+    font-size:13px;
+    color:#8b5558;
+    margin:0 9px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer{
+    position:absolute;
+    bottom:10px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:50;
+    font-size:10px;
+    letter-spacing:1px;
+    color:#88605d;
+    white-space:nowrap;
+}
+
+
+/* =========================================================
+   DECOR IMAGES
+========================================================= */
+
+.decor{
+    position:absolute;
+    z-index:5;
+    pointer-events:none;
+    user-select:none;
+    object-fit:contain;
+}
+
+.decor.cherry{
+    width:72px;
+}
+
+.decor.flower{
+    width:52px;
+}
+
+.decor.heart{
+    width:38px;
+}
+
+
+/* =========================================================
+   EXTRA MINI DECOR
+========================================================= */
+
+.spark{
+    position:absolute;
+    z-index:4;
+    font-size:18px;
+    color:#e2bd43;
+    pointer-events:none;
+}
+
+.spark.pink{
+    color:#d95f6b;
+}
+
+.mini-heart{
+    position:absolute;
+    z-index:4;
+    color:#d97980;
+    font-size:22px;
+    pointer-events:none;
+}
+
+
+/* =========================================================
+   PAGE 1
+========================================================= */
+
+.page1 .happy{
+    position:absolute;
+    top:105px;
+    left:50%;
+    transform:translateX(-50%);
+    width:300px;
+    max-width:75%;
+    z-index:8;
+}
+
+.page1 .stamp{
+    position:absolute;
+    top:72px;
+    left:35px;
+    width:105px;
+    z-index:6;
+    transform:rotate(-4deg);
+}
+
+.page1 .cherry-top{
+    position:absolute;
+    top:100px;
+    right:25px;
+    width:82px;
+    z-index:7;
+}
+
+.page1 .flower-left{
+    top:285px;
+    left:18px;
+}
+
+.page1 .flower-right{
+    top:330px;
+    right:15px;
+}
+
+.page1 .heart-one{
+    top:380px;
+    left:28px;
+    width:28px;
+}
+
+.page1 .heart-two{
+    top:420px;
+    right:34px;
+    width:30px;
+}
+
+
+/* =========================================================
+   NOTE CARD
+========================================================= */
+
+.note-card{
+    position:absolute;
+    left:50%;
+    top:52%;
+    transform:translate(-50%,-50%);
+    width:78%;
+    min-height:175px;
+    z-index:9;
+    padding:30px 25px 25px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,252,243,.94),
+            rgba(246,237,222,.91)
+        );
+    border:
+        1px solid rgba(120,70,63,.18);
+    box-shadow:
+        0 10px 22px rgba(90,50,45,.12);
+    text-align:center;
+}
+
+.note-card::before{
+    content:"";
+    position:absolute;
+    top:-12px;
+    left:24%;
+    width:90px;
+    height:26px;
+    background:rgba(242,193,190,.78);
+    transform:rotate(-3deg);
+}
+
+.note-card p{
+    font-size:20px;
+    line-height:2;
+    color:#664444;
+    font-weight:600;
+}
+
+.note-card p:last-child{
+    color:#9a474b;
+    font-size:21px;
+    margin-top:5px;
+}
+
+
+/* =========================================================
+   START BUTTON
+========================================================= */
+
+.start-btn,
+.next-btn{
+    border:0;
+    border-radius:13px;
+    background:#b94551;
+    color:#fff;
+    font-family:'Cairo',sans-serif;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow:
+        0 6px 0 #8d3540,
+        0 10px 18px rgba(104,42,46,.18);
+    transition:
+        opacity .35s ease,
+        transform .15s ease;
+}
+
+.start-btn{
+    position:absolute;
+    bottom:60px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:40;
+    min-width:150px;
+    height:52px;
+    font-size:20px;
+}
+
+.start-btn:active{
+    transform:
+        translateX(-50%)
+        translateY(4px);
+    box-shadow:
+        0 2px 0 #8d3540;
+}
+
+
+/* =========================================================
+   TITLES
+========================================================= */
+
+.page2 .section-title,
+.page3 .section-title,
+.page4 .section-title,
+.page5 .section-title,
+.page6 .section-title{
+    position:absolute;
+    top:88px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:8;
+    font-family:'DM Serif Display',serif;
+    font-size:40px;
+    color:#91454a;
+    text-align:center;
+    white-space:nowrap;
+}
+
+.arabic-subtitle{
+    position:absolute;
+    top:145px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:8;
+    font-size:17px;
+    color:#775050;
+    white-space:nowrap;
+}
+
+
+/* =========================================================
+   PAGE 2 — ENVELOPE
+========================================================= */
+
+.envelope-zone{
+    position:absolute;
+    top:245px;
+    left:50%;
+    transform:translateX(-50%);
+    width:330px;
+    max-width:82%;
+    height:300px;
+    z-index:12;
+}
+
+.envelope{
+    position:absolute;
+    left:50%;
+    bottom:10px;
+    transform:translateX(-50%);
+    width:310px;
+    height:190px;
+    cursor:pointer;
+    filter:
+        drop-shadow(
+            0 14px 15px rgba(82,48,45,.16)
+        );
+    transition:
+        transform .35s ease;
+}
+
+.envelope:hover{
+    transform:
+        translateX(-50%)
+        translateY(-4px);
+}
+
+.letter-paper{
+    position:absolute;
+    left:50%;
+    bottom:27px;
+    width:265px;
+    height:220px;
+    transform:
+        translateX(-50%)
+        translateY(80px);
+    background:
+        linear-gradient(
+            145deg,
+            #fffaf0,
+            #f7eddc
+        );
+    border:
+        1px solid rgba(119,73,66,.22);
+    box-shadow:
+        0 8px 20px rgba(80,45,40,.12);
+    z-index:1;
+    padding:32px 22px;
+    text-align:center;
+    opacity:0;
+    transition:
+        transform .6s cubic-bezier(.16,1,.3,1),
+        opacity .4s ease;
+}
+
+.letter-paper h3{
+    color:#97464b;
+    font-size:23px;
+    margin-bottom:18px;
+}
+
+.letter-paper p{
+    color:#694949;
+    font-size:15px;
+    line-height:2;
+}
+
+.envelope-back{
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(
+            145deg,
+            #e7b3bc,
+            #d98e9b
+        );
+    border-radius:8px;
+    z-index:2;
+    overflow:hidden;
+}
+
+.envelope-back::before{
+    content:"";
+    position:absolute;
+    inset:12px;
+    border:
+        1px dashed rgba(120,65,68,.32);
+    border-radius:5px;
+}
+
+.envelope-flap{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:105px;
+    background:
+        linear-gradient(
+            145deg,
+            #f0c3c9,
+            #dc9aa5
+        );
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            50% 78%
+        );
+    transform-origin:top center;
+    z-index:4;
+    transition:
+        transform .55s cubic-bezier(.16,1,.3,1);
+}
+
+.envelope-front{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    height:115px;
+    background:
+        linear-gradient(
+            145deg,
+            #e6aeb8,
+            #d88996
+        );
+    clip-path:
+        polygon(
+            0 0,
+            50% 58%,
+            100% 0,
+            100% 100%,
+            0 100%
+        );
+    z-index:5;
+}
+
+.envelope-seal{
+    position:absolute;
+    left:50%;
+    top:85px;
+    transform:translateX(-50%);
+    z-index:7;
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    background:#b94551;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:19px;
+    box-shadow:
+        0 4px 8px rgba(100,40,45,.20);
+}
+
+.envelope-zone.open .letter-paper{
+    transform:
+        translateX(-50%)
+        translateY(-5px);
+    opacity:1;
+    z-index:6;
+}
+
+.envelope-zone.open .envelope-flap{
+    transform:
+        rotateX(180deg);
+    z-index:1;
+}
+
+.envelope-zone.open .envelope-seal{
+    opacity:0;
+}
+
+.envelope-zone.open .envelope{
+    transform:
+        translateX(-50%)
+        translateY(40px);
+}
+
+
+/* =========================================================
+   NEXT BUTTON
+========================================================= */
+
+.next-btn{
+    position:absolute;
+    bottom:58px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:60;
+    min-width:135px;
+    height:52px;
+    padding:0 30px;
+    font-size:18px;
+    opacity:0;
+    pointer-events:none;
+}
+
+.next-btn.show{
+    opacity:1;
+    pointer-events:auto;
+}
+
+.next-btn:active{
+    transform:
+        translateX(-50%)
+        translateY(4px);
+    box-shadow:
+        0 2px 0 #8d3540;
+}
+
+
+/* =========================================================
+   PAGE 3 — PINATA
+========================================================= */
+
+.page3 .pinata-title{
+    top:72px !important;
+    font-size:39px;
+}
+
+.pinata-instruction{
+    position:absolute;
+    top:145px;
+    left:50%;
+    transform:translateX(-50%);
+    width:92%;
+    z-index:20;
+    text-align:center;
+    color:#743f42;
+}
+
+.pinata-instruction strong{
+    display:block;
+    font-size:19px;
+    color:#9d444c;
+}
+
+.pinata-instruction span{
+    display:block;
+    margin-top:3px;
+    font-size:15px;
+    color:#664747;
+}
+
+.pinata-stage{
+    position:absolute;
+    top:255px;
+    left:50%;
+    transform:translateX(-50%);
+    width:325px;
+    max-width:82%;
+    height:390px;
+    z-index:15;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+}
+
+.pinata{
+    position:absolute;
+    width:100%;
+    height:auto;
+    display:block;
+    object-fit:contain;
+    filter:
+        drop-shadow(
+            0 12px 10px
+            rgba(75,40,38,.13)
+        );
+}
+
+.open-pinata{
+    opacity:0;
+    transform:
+        scale(.985);
+    transition:
+        opacity .16s ease,
+        transform .16s ease;
+}
+
+.closed-pinata{
+    opacity:1;
+    transform:
+        scale(1);
+    transition:
+        opacity .16s ease,
+        transform .16s ease;
+}
+
+.pinata-stage.hit .closed-pinata{
+    animation:
+        pinataHit .38s ease;
+}
+
+.pinata-stage.transitioning .closed-pinata{
+    animation:
+        closedDisappear .32s cubic-bezier(.4,0,.2,1)
+        forwards;
+}
+
+.pinata-stage.transitioning .open-pinata{
+    animation:
+        openAppear .32s cubic-bezier(.4,0,.2,1)
+        forwards;
+}
+
+@keyframes pinataHit{
+    0%{
+        transform:rotate(0) scale(1);
+    }
+
+    20%{
+        transform:
+            rotate(-7deg)
+            scale(1.025);
+    }
+
+    40%{
+        transform:
+            rotate(7deg)
+            scale(1.035);
+    }
+
+    60%{
+        transform:
+            rotate(-4deg)
+            scale(1.015);
+    }
+
+    80%{
+        transform:
+            rotate(3deg);
+    }
+
+    100%{
+        transform:
+            rotate(0)
+            scale(1);
+    }
+}
+
+@keyframes closedDisappear{
+    0%{
+        opacity:1;
+        transform:
+            scale(1)
+            rotate(0);
+    }
+
+    45%{
+        opacity:1;
+        transform:
+            scale(1.025)
+            rotate(-2deg);
+    }
+
+    100%{
+        opacity:0;
+        transform:
+            scale(.97)
+            rotate(1deg);
+    }
+}
+
+@keyframes openAppear{
+    0%{
+        opacity:0;
+        transform:
+            scale(1.025)
+            rotate(-1deg);
+    }
+
+    40%{
+        opacity:1;
+        transform:
+            scale(1.01)
+            rotate(1deg);
+    }
+
+    100%{
+        opacity:1;
+        transform:
+            scale(1)
+            rotate(0);
+    }
+}
+
+.pinata-decor{
+    position:absolute;
+    z-index:5;
+    pointer-events:none;
+    font-size:22px;
+}
+
+.pinata-decor.star{
+    color:#e0b93f;
+}
+
+.pinata-decor.heart{
+    color:#d95f6b;
+}
+
+
+/* =========================================================
+   PAGE 4 — TICKETS
+========================================================= */
+
+.page4 .section-title{
+    top:83px;
+    font-size:38px;
+}
+
+.pass-subtitle{
+    position:absolute;
+    top:142px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:17px;
+    z-index:8;
+    white-space:nowrap;
+}
+
+.ticket-board{
+    position:absolute;
+    top:205px;
+    left:50%;
+    transform:translateX(-50%);
+    width:88%;
+    z-index:10;
+    padding:14px 12px 18px;
+    background:
+        rgba(255,250,240,.65);
+    border:
+        1px solid rgba(105,57,57,.12);
+    box-shadow:
+        0 10px 25px rgba(90,45,43,.07);
+}
+
+.ticket-label{
+    position:absolute;
+    top:-18px;
+    right:18px;
+    background:#e7c84f;
+    padding:4px 17px;
+    font-family:'DM Serif Display',serif;
+    font-size:16px;
+    color:#684440;
+    transform:rotate(1deg);
+}
+
+.passes{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+}
+
+.pass{
+    width:100%;
+    min-height:84px;
+    position:relative;
+    border:
+        1px solid rgba(105,57,57,.22);
+    display:flex;
+    align-items:center;
+    cursor:pointer;
+    overflow:hidden;
+    box-shadow:
+        0 5px 0 rgba(116,64,62,.10),
+        0 8px 15px rgba(90,45,43,.07);
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+.pass:hover{
+    transform:
+        translateY(-3px);
+    box-shadow:
+        0 8px 0 rgba(116,64,62,.10),
+        0 13px 20px rgba(90,45,43,.09);
+}
+
+.pass:nth-child(1){
+    background:#efc5d2;
+}
+
+.pass:nth-child(2){
+    background:#f0d86d;
+}
+
+.pass:nth-child(3){
+    background:#e8a5a5;
+}
+
+.pass::before,
+.pass::after{
+    content:"";
+    position:absolute;
+    top:50%;
+    width:20px;
+    height:40px;
+    transform:translateY(-50%);
+    background:#eee7dc;
+    border-radius:50%;
+    z-index:3;
+}
+
+.pass::before{
+    left:-11px;
+}
+
+.pass::after{
+    right:-11px;
+}
+
+.pass-number{
+    width:45px;
+    text-align:center;
+    font-family:'DM Serif Display',serif;
+    font-size:17px;
+    color:rgba(100,60,60,.55);
+    flex-shrink:0;
+}
+
+.pass-icon{
+    width:50px;
+    height:50px;
+    object-fit:contain;
+    margin:0 12px;
+    flex-shrink:0;
+}
+
+.pass-text{
+    flex:1;
+    text-align:right;
+    padding-left:25px;
+    padding-right:4px;
+}
+
+.pass-title{
+    display:block;
+    font-family:'DM Serif Display',serif;
+    font-size:24px;
+    color:#673f43;
+}
+
+.pass-small{
+    display:block;
+    font-size:12px;
+    color:#754c4e;
+    margin-top:2px;
+}
+
+
+/* =========================================================
+   PAGE 5 — GIFT BOX
+========================================================= */
+
+.page5 .section-title{
+    top:80px !important;
+}
+
+.gift-subtitle{
+    position:absolute;
+    top:137px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:8;
+    padding:6px 20px;
+    background:#e8ca5c;
+    color:#684440;
+    font-size:15px;
+    font-weight:700;
+    box-shadow:
+        0 4px 8px rgba(90,55,40,.08);
+}
+
+.gift-area{
+    position:absolute;
+    top:215px;
+    left:50%;
+    transform:translateX(-50%);
+    width:340px;
+    max-width:82%;
+    height:430px;
+    z-index:12;
+}
+
+.gift-label{
+    position:absolute;
+    top:0;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:8;
+    font-family:'DM Serif Display',serif;
+    font-size:17px;
+    color:#684440;
+    white-space:nowrap;
+}
+
+.gift-box{
+    position:absolute;
+    left:50%;
+    bottom:48px;
+    transform:translateX(-50%);
+    width:285px;
+    height:190px;
+    cursor:pointer;
+    filter:
+        drop-shadow(
+            0 16px 13px rgba(70,38,37,.16)
+        );
+}
+
+.box-body{
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:100%;
+    height:135px;
+    background:
+        linear-gradient(
+            145deg,
+            #d84f5d,
+            #bd3e4d
+        );
+    border-radius:
+        0 0 12px 12px;
+    z-index:3;
+    overflow:hidden;
+}
+
+.box-body::before{
+    content:"";
+    position:absolute;
+    inset:10px;
+    border:
+        1px dashed rgba(255,255,255,.48);
+    border-radius:7px;
+}
+
+.box-ribbon{
+    position:absolute;
+    left:50%;
+    top:0;
+    transform:translateX(-50%);
+    width:42px;
+    height:100%;
+    background:#e7c84f;
+    z-index:5;
+}
+
+.box-lid{
+    position:absolute;
+    left:50%;
+    top:25px;
+    transform:
+        translateX(-50%);
+    width:310px;
+    height:55px;
+    background:
+        linear-gradient(
+            145deg,
+            #e45b68,
+            #c53f4f
+        );
+    border-radius:9px;
+    z-index:7;
+    transition:
+        transform .65s cubic-bezier(.16,1,.3,1);
+}
+
+.box-lid::before{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:0;
+    transform:translateX(-50%);
+    width:42px;
+    height:100%;
+    background:#e7c84f;
+}
+
+.box-bow{
+    position:absolute;
+    top:-10px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:9;
+    width:100px;
+    height:55px;
+}
+
+.bow-left,
+.bow-right{
+    position:absolute;
+    top:8px;
+    width:50px;
+    height:35px;
+    background:#e85a68;
+    border:
+        2px solid rgba(155,45,58,.3);
+    border-radius:
+        70% 35% 70% 35%;
+}
+
+.bow-left{
+    left:0;
+    transform:rotate(-20deg);
+}
+
+.bow-right{
+    right:0;
+    transform:
+        scaleX(-1)
+        rotate(-20deg);
+}
+
+.bow-center{
+    position:absolute;
+    left:50%;
+    top:17px;
+    transform:translateX(-50%);
+    width:25px;
+    height:25px;
+    border-radius:7px;
+    background:#e7c84f;
+    z-index:2;
+}
+
+.box-text{
+    position:absolute;
+    left:50%;
+    top:92px;
+    transform:translateX(-50%);
+    z-index:8;
+    color:#fff;
+    font-family:'DM Serif Display',serif;
+    font-size:21px;
+    letter-spacing:1px;
+    white-space:nowrap;
+}
+
+
+/* =========================================================
+   GIFT IMAGE
+========================================================= */
+
+.gift-image{
+    position:absolute;
+    left:50%;
+    bottom:62px;
+    transform:
+        translateX(-50%)
+        translateY(110px)
+        scale(.78);
+    width:270px;
+    height:165px;
+    object-fit:cover;
+    border-radius:12px;
+    z-index:2;
+    opacity:0;
+    pointer-events:none;
+    box-shadow:
+        0 18px 35px rgba(0,0,0,.25);
+    transition:
+        opacity .5s ease,
+        transform .75s cubic-bezier(.16,1,.3,1);
+}
+
+.gift-area.open .box-lid{
+    transform:
+        translateX(-50%)
+        translateY(-105px)
+        rotate(-4deg);
+}
+
+.gift-area.open .box-bow{
+    transform:
+        translateX(-50%)
+        translateY(-108px)
+        rotate(-4deg);
+    transition:
+        transform .65s cubic-bezier(.16,1,.3,1);
+}
+
+.gift-area.open .gift-image{
+    opacity:1;
+    transform:
+        translateX(-50%)
+        translateY(-125px)
+        scale(1);
+    z-index:10;
+}
+
+.gift-area.open .box-text{
+    opacity:.3;
+}
+
+.gift-hint{
+    position:absolute;
+    bottom:2px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:15;
+    text-align:center;
+    font-size:16px;
+    color:#684344;
+    white-space:nowrap;
+    transition:opacity .3s ease;
+}
+
+.gift-area.open .gift-hint{
+    opacity:0;
+}
+
+
+/* =========================================================
+   PAGE 6 — FINAL
+========================================================= */
+
+.page6 .section-title{
+    top:90px;
+    font-size:38px;
+}
+
+.final-message{
+    position:absolute;
+    top:190px;
+    left:50%;
+    transform:translateX(-50%);
+    width:82%;
+    padding:30px 22px;
+    background:
+        rgba(255,250,240,.75);
+    border:
+        1px solid rgba(105,57,57,.16);
+    text-align:center;
+    box-shadow:
+        0 10px 25px rgba(90,45,43,.08);
+    z-index:8;
+}
+
+.final-message h2{
+    font-family:'DM Serif Display',serif;
+    color:#96464b;
+    font-size:28px;
+    margin-bottom:14px;
+}
+
+.final-message p{
+    font-size:16px;
+    line-height:2;
+    color:#684747;
+}
+
+.final-heart{
+    position:absolute;
+    top:390px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:70px;
+    color:#d95f6b;
+    animation:
+        heartbeat 1.6s ease-in-out infinite;
+    z-index:8;
+}
+
+@keyframes heartbeat{
+    0%,100%{
+        transform:
+            translateX(-50%)
+            scale(1);
+    }
+
+    50%{
+        transform:
+            translateX(-50%)
+            scale(1.12);
+    }
+}
+
+
+/* =========================================================
+   CONFETTI
+========================================================= */
+
+#confettiContainer{
+    position:absolute;
+    inset:0;
+    z-index:100;
+    pointer-events:none;
+    overflow:hidden;
+}
+
+.confetti{
+    position:absolute;
+    top:-30px;
+    width:8px;
+    height:13px;
+    opacity:0;
+    pointer-events:none;
+}
+
+.confetti.active{
+    animation:
+        fall linear forwards;
+}
+
+@keyframes fall{
+    0%{
+        transform:
+            translateY(-30px)
+            rotate(0deg);
+        opacity:1;
+    }
+
+    100%{
+        transform:
+            translateY(105vh)
+            rotate(650deg);
+        opacity:0;
+    }
+}
+
+
+/* =========================================================
+   MOBILE / SHORT SCREENS
+========================================================= */
+
+@media(max-height:720px){
+
+    .logo{
+        top:12px;
+        font-size:20px;
+    }
+
+    .page1 .happy{
+        top:82px;
+        width:255px;
+    }
+
+    .page1 .stamp{
+        top:58px;
+        width:85px;
+    }
+
+    .page1 .cherry-top{
+        top:82px;
+        width:70px;
+    }
+
+    .note-card{
+        top:51%;
+        min-height:140px;
+        padding:22px 18px;
+    }
+
+    .note-card p{
+        font-size:16px;
+    }
+
+    .note-card p:last-child{
+        font-size:17px;
+    }
+
+    .start-btn{
+        bottom:42px;
+        height:48px;
+        font-size:18px;
+    }
+
+    .page2 .section-title,
+    .page4 .section-title,
+    .page5 .section-title,
+    .page6 .section-title{
+        top:60px;
+        font-size:33px;
+    }
+
+    .arabic-subtitle,
+    .pass-subtitle{
+        top:112px;
+        font-size:14px;
+    }
+
+    .envelope-zone{
+        top:185px;
+        height:275px;
+    }
+
+    .envelope{
+        width:280px;
+        height:170px;
+    }
+
+    .letter-paper{
+        width:235px;
+        height:195px;
+        padding:25px 16px;
+    }
+
+    .letter-paper h3{
+        font-size:20px;
+        margin-bottom:10px;
+    }
+
+    .letter-paper p{
+        font-size:13px;
+    }
+
+    .next-btn{
+        bottom:42px;
+        height:48px;
+        font-size:17px;
+    }
+
+    .page3 .pinata-title{
+        top:55px !important;
+        font-size:32px !important;
+    }
+
+    .pinata-instruction{
+        top:112px;
+    }
+
+    .pinata-instruction strong{
+        font-size:17px;
+    }
+
+    .pinata-instruction span{
+        font-size:13px;
+    }
+
+    .pinata-stage{
+        top:205px;
+        width:280px;
+        max-width:76%;
+        height:350px;
+    }
+
+    .page4 .section-title{
+        top:58px;
+        font-size:31px;
+    }
+
+    .pass-subtitle{
+        top:106px;
+    }
+
+    .ticket-board{
+        top:165px;
+        width:90%;
+    }
+
+    .pass{
+        min-height:70px;
+    }
+
+    .pass-number{
+        width:34px;
+        font-size:14px;
+    }
+
+    .pass-icon{
+        width:40px;
+        height:40px;
+        margin:0 8px;
+    }
+
+    .pass-title{
+        font-size:20px;
+    }
+
+    .pass-small{
+        font-size:10px;
+    }
+
+    .page5 .section-title{
+        top:58px !important;
+    }
+
+    .gift-subtitle{
+        top:105px;
+        font-size:13px;
+    }
+
+    .gift-area{
+        top:170px;
+        width:310px;
+        max-width:84%;
+        height:400px;
+    }
+
+    .gift-box{
+        width:260px;
+        transform:
+            translateX(-50%)
+            scale(.9);
+    }
+
+    .gift-image{
+        width:245px;
+        height:150px;
+    }
+
+    .page6 .section-title{
+        top:62px;
+        font-size:32px;
+    }
+
+    .final-message{
+        top:155px;
+    }
+
+    .final-heart{
+        top:350px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="app">
+<div class="book">
+
+
+<!-- =====================================================
+     PAGE 1
+===================================================== -->
+
+<section class="page page1 active" id="page1">
+
+    <div class="logo">LETTERS</div>
+
+    <img class="decor stamp" src="happy-birthday.png" alt="">
+
+    <img
+        class="happy"
+        src="happy-birthday.png"
+        alt="Happy Birthday"
+    >
+
+    <img
+        class="decor cherry cherry-top"
+        src="cherries.png"
+        alt=""
+    >
+
+    <img
+        class="decor flower flower-left"
+        src="flower.png"
+        alt=""
+    >
+
+    <img
+        class="decor flower flower-right"
+        src="flower.png"
+        alt=""
+    >
+
+    <img
+        class="decor heart heart-one"
+        src="heart.png"
+        alt=""
+    >
+
+    <img
+        class="decor heart heart-two"
+        src="heart.png"
+        alt=""
+    >
+
+    <span class="spark" style="top:300px;right:95px;">✦</span>
+    <span class="spark pink" style="top:470px;left:65px;">•</span>
+    <span class="mini-heart" style="top:515px;right:70px;">♡</span>
+    <span class="spark" style="top:570px;left:95px;">✦</span>
+
+    <div class="note-card">
+        <p>اليوم يومك</p>
+        <p>ومفاجآتنا لك كثيرة</p>
+        <p>جاهزة تعيشي التجربة؟</p>
+    </div>
+
+    <button
+        class="start-btn"
+        onclick="goToPage(2)"
+    >
+        ابدأ
+    </button>
+
+    <div class="footer">
+        Made by Letters ♡
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PAGE 2 — LETTER
+===================================================== -->
+
+<section class="page page2" id="page2">
+
+    <div class="logo">LETTERS</div>
+
+    <h1 class="section-title">
+        A LITTLE NOTE
+    </h1>
+
+    <div class="arabic-subtitle">
+        رسالة صغيرة لك ♡
+    </div>
+
+    <img
+        class="decor flower"
+        src="flower.png"
+        alt=""
+        style="top:220px;left:38px;"
+    >
+
+    <img
+        class="decor flower"
+        src="flower.png"
+        alt=""
+        style="top:470px;right:30px;width:43px;"
+    >
+
+    <img
+        class="decor cherry"
+        src="cherries.png"
+        alt=""
+        style="top:170px;right:30px;"
+    >
+
+    <img
+        class="decor heart"
+        src="heart.png"
+        alt=""
+        style="top:285px;left:38px;width:31px;"
+    >
+
+    <span
+        class="spark"
+        style="top:235px;right:105px;"
+    >✦</span>
+
+    <span
+        class="mini-heart"
+        style="top:505px;left:70px;"
+    >♡</span>
+
+    <div
+        class="envelope-zone"
+        id="letterEnvelope"
+        onclick="openLetter()"
+    >
+
+        <div class="letter-paper">
+
+            <h3>
+                كل عام وأنت بخير
+            </h3>
+
+            <p>
+                18 سنة من عمرك الله يجعل سنتك الجديدة أجمل وأخف من كل اللي قبلها، ويحقق لك فيها كل اللي تتمنينه عقبال سنين كثيرة وأنت بخير وسعادة.
+            </p>
+
+        </div>
+
+        <div class="envelope">
+
+            <div class="envelope-back"></div>
+            <div class="envelope-flap"></div>
+            <div class="envelope-front"></div>
+
+            <div class="envelope-seal">
+                ♡
+            </div>
+
+        </div>
+
+    </div>
+
+    <button
+        class="next-btn"
+        id="letterNext"
+        onclick="goToPage(3)"
+    >
+        كملي ♡
+    </button>
+
+    <div class="footer">
+        Made by Letters ♡
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PAGE 3 — PINATA
+===================================================== -->
+
+<section class="page page3" id="page3">
+
+    <div class="logo">LETTERS</div>
+
+    <h1 class="section-title pinata-title">
+
+        Piñata
+
+        <span
+            style="background:#e9ca54;padding:0 9px;"
+        >
+            TIME!
+        </span>
+
+    </h1>
+
+    <div class="pinata-instruction">
+
+        <strong>
+            اضغطي على البنياتا ثلاث مرات لتكسيرها!
+        </strong>
+
+        <span>
+            يلا نشوف إيش مخبّية لك ♡
+        </span>
+
+    </div>
+
+    <img
+        class="decor cherry"
+        src="cherries.png"
+        alt=""
+        style="top:165px;right:25px;width:65px;"
+    >
+
+    <img
+        class="decor flower"
+        src="flower.png"
+        alt=""
+        style="top:270px;left:25px;width:45px;"
+    >
+
+    <img
+        class="decor heart"
+        src="heart.png"
+        alt=""
+        style="top:410px;right:30px;width:34px;"
+    >
+
+    <img
+        class="decor flower"
+        src="flower.png"
+        alt=""
+        style="top:555px;left:40px;width:42px;"
+    >
+
+    <span
+        class="pinata-decor star"
+        style="top:300px;right:75px;"
+    >✦</span>
+
+    <span
+        class="pinata-decor heart"
+        style="top:520px;right:75px;"
+    >♡</span>
+
+    <span
+        class="pinata-decor star"
+        style="top:600px;right:90px;"
+    >✦</span>
+
+    <span
+        class="pinata-decor heart"
+        style="top:350px;left:60px;"
+    >♡</span>
+
+    <div
+        class="pinata-stage"
+        id="pinataStage"
+        onclick="hitPinata()"
+    >
+
+        <img
+            class="pinata closed-pinata"
+            id="closedPinata"
+            src="pinata-closed.png"
+            alt="Pinata"
+        >
+
+        <img
+            class="pinata open-pinata"
+            id="openPinata"
+            src="pinata-open-v2.png"
+            alt="Open Pinata"
+        >
+
+    </div>
+
+    <button
+        class="next-btn"
+        id="pinataNext"
+        onclick="goToPage(4)"
+    >
+        التالي
+    </button>
+
+    <div class="footer">
+        Made by Letters ♡
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PAGE 4 — TICKETS
+===================================================== -->
+
+<section class="page page4" id="page4">
+
+    <div class="logo">LETTERS</div>
+
+    <h1 class="section-title">
+        PICK YOUR TICKET
+    </h1>
+
+    <div class="pass-subtitle">
+        ♡ اختاري تذكرتك
+    </div>
+
+    <img
+        class="decor cherry"
+        src="cherries.png"
+        alt=""
+        style="
+            top:150px;
+            right:25px;
+            width:68px;
+            z-index:7;
+        "
+    >
+
+    <img
+        class="decor flower"
+        src="flower.png"
+        alt=""
+        style="top:570px;left:30px;width:45px;"
+    >
+
+    <img
+        class="decor heart"
+        src="heart.png"
+        alt=""
+        style="top:580px;right:40px;width:34px;"
+    >
+
+    <span
+        class="spark"
+        style="top:530px;right:90px;"
+    >✦</span>
+
+    <div class="ticket-board">
+
+        <div class="ticket-label">
+            TICKETS
+        </div>
+
+        <div class="passes">
+
+            <div
+                class="pass"
+                onclick="goToPage(5)"
+            >
+
+                <span class="pass-number">
+                    01
+                </span>
+
+                <img
+                    class="pass-icon"
+                    src="cherries.png"
+                    alt=""
+                >
+
+                <div class="pass-text">
+
+                    <span class="pass-title">
+                        CHERRY PASS
+                    </span>
+
+                    <span class="pass-small">
+                        شيء حلو ينتظرك
+                    </span>
+
+                </div>
+
+            </div>
+
+            <div
+                class="pass"
+                onclick="goToPage(5)"
+            >
+
+                <span class="pass-number">
+                    02
+                </span>
+
+                <img
+                    class="pass-icon"
+                    src="heart.png"
+                    alt=""
+                >
+
+                <div class="pass-text">
+
+                    <span class="pass-title">
+                        SWEET PASS
+                    </span>
+
+                    <span class="pass-small">
+                        لحظة خاصة لك
+                    </span>
+
+                </div>
+
+            </div>
+
+            <div
+                class="pass"
+                onclick="goToPage(5)"
+            >
+
+                <span class="pass-number">
+                    03
+                </span>
+
+                <img
+                    class="pass-icon"
+                    src="flower.png"
+                    alt=""
+                >
+
+                <div class="pass-text">
+
+                    <span class="pass-title">
+                        FUN PASS
+                    </span>
+
+                    <span class="pass-small">
+                        لسه فيه مفاجأة
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer">
+        Made by Letters ♡
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PAGE 5 — GIFT
+===================================================== -->
+
+<section class="page page5" id="page5">
+
+    <div class="logo">LETTERS</div>
+
+    <h1 class="section-title">
+        GIFT
+    </h1>
+
+    <div class="gift-subtitle">
+        ♡ SOMETHING FOR YOU
+    </div>
+
+    <img
+        class="decor heart"
+        src="heart.png"
+        alt=""
+        style="top:215px;left:30px;width:34px;"
+    >
+
+    <img
+        class="decor flower"
+        src="flower.png"
+        alt=""
+        style="top:220px;right:30px;width:47px;"
+    >
+
+    <img
+        class="decor cherry"
+        src="cherries.png"
+        alt=""
+        style="top:555px;left:30px;width:65px;"
+    >
+
+    <span
+        class="spark"
+        style="top:300px;left:55px;"
+    >✦</span>
+
+    <span
+        class="mini-heart"
+        style="top:530px;right:65px;"
+    >♡</span>
+
+    <div
+        class="gift-area"
+        id="giftArea"
+    >
+
+        <div class="gift-label">
+            ♡ FOR YOU
+        </div>
+
+        <div
+            class="gift-box"
+            onclick="openGift()"
+        >
+
+            <div class="box-body">
+
+                <div class="box-ribbon"></div>
+
+                <div class="box-text">
+                    FOR YOU ♡
+                </div>
+
+            </div>
+
+            <div class="box-lid"></div>
+
+            <div class="box-bow">
+
+                <div class="bow-left"></div>
+                <div class="bow-right"></div>
+                <div class="bow-center"></div>
+
+            </div>
+
+            <img
+                class="gift-image"
+                id="giftImage"
+                src="gift.png"
+                alt="هدية"
+            >
+
+        </div>
+
+        <div class="gift-hint">
+            اضغطي على الهدية<br>
+            لفتحها ♡
+        </div>
+
+    </div>
+
+    <button
+        class="next-btn"
+        id="giftNext"
+        onclick="goToPage(6)"
+    >
+        التالي
+    </button>
+
+    <div class="footer">
+        Made by Letters ♡
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PAGE 6 — FINAL
+===================================================== -->
+
+<section class="page page6" id="page6">
+
+    <div class="logo">LETTERS</div>
+
+    <h1 class="section-title">
+        FOR YOU ♡
+    </h1>
+
+    <div class="final-message">
+
+        <h2>
+            هذي لك 🤍
+        </h2>
+
+        <p>
+            لأنك تستاهلين الأشياء الحلوة،<br>
+            مو بس اليوم… كل يوم.
+        </p>
+
+    </div>
+
+    <div class="final-heart">
+        ♡
+    </div>
+
+    <img
+        class="decor cherry"
+        src="cherries.png"
+        alt=""
+        style="top:210px;left:35px;width:65px;"
+    >
+
+    <img
+        class="decor flower"
+        src="flower.png"
+        alt=""
+        style="top:225px;right:35px;width:48px;"
+    >
+
+    <img
+        class="decor heart"
+        src="heart.png"
+        alt=""
+        style="top:480px;left:55px;width:34px;"
+    >
+
+    <span
+        class="spark"
+        style="top:520px;right:70px;"
+    >✦</span>
+
+    <span
+        class="mini-heart"
+        style="top:570px;right:120px;"
+    >♡</span>
+
+    <div class="footer">
+        Made by Letters ♡
+    </div>
+
+</section>
+
+<div id="confettiContainer"></div>
+
+</div>
+</div>
+
+
+<script>
+
+/* =========================================================
+   PAGE NAVIGATION
+========================================================= */
+
+let currentPage = 1;
+
+function goToPage(number){
+
+    if(number === currentPage){
+        return;
+    }
+
+    const oldPage =
+        document.getElementById(
+            "page" + currentPage
+        );
+
+    const newPage =
+        document.getElementById(
+            "page" + number
+        );
+
+    if(!newPage){
+        return;
+    }
+
+    oldPage.classList.remove("active");
+    oldPage.classList.add("leaving");
+
+    newPage.classList.add("active");
+
+    currentPage = number;
+
+    setTimeout(() => {
+
+        oldPage.classList.remove("leaving");
+
+    },600);
+}
+
+
+/* =========================================================
+   LETTER
+========================================================= */
+
+let letterOpened = false;
+
+function openLetter(){
+
+    if(letterOpened){
+        return;
+    }
+
+    letterOpened = true;
+
+    const envelope =
+        document.getElementById(
+            "letterEnvelope"
+        );
+
+    const next =
+        document.getElementById(
+            "letterNext"
+        );
+
+    envelope.classList.add("open");
+
+    setTimeout(() => {
+
+        next.classList.add("show");
+
+    },850);
+}
+
+
+/* =========================================================
+   PINATA — THREE HITS
+========================================================= */
+
+let pinataHits = 0;
+let pinataOpened = false;
+
+function hitPinata(){
+
+    if(pinataOpened){
+        return;
+    }
+
+    const stage =
+        document.getElementById(
+            "pinataStage"
+        );
+
+    const next =
+        document.getElementById(
+            "pinataNext"
+        );
+
+    pinataHits++;
+
+    if(pinataHits < 3){
+
+        stage.classList.remove("hit");
+
+        void stage.offsetWidth;
+
+        stage.classList.add("hit");
+
+        if(pinataHits === 2){
+
+            createConfetti(10);
+
+        }
+
+        return;
+    }
+
+    pinataOpened = true;
+
+    stage.classList.remove("hit");
+
+    void stage.offsetWidth;
+
+    stage.classList.add("transitioning");
+
+    createConfetti(22);
+
+    setTimeout(() => {
+
+        next.classList.add("show");
+
+    },420);
+}
+
+
+/* =========================================================
+   GIFT
+========================================================= */
+
+let giftOpened = false;
+
+function openGift(){
+
+    if(giftOpened){
+        return;
+    }
+
+    giftOpened = true;
+
+    const gift =
+        document.getElementById(
+            "giftArea"
+        );
+
+    const next =
+        document.getElementById(
+            "giftNext"
+        );
+
+    gift.classList.add("open");
+
+    createConfetti(18);
+
+    setTimeout(() => {
+
+        next.classList.add("show");
+
+    },900);
+}
+
+
+/* =========================================================
+   CONFETTI
+========================================================= */
+
+function createConfetti(amount = 15){
+
+    const container =
+        document.getElementById(
+            "confettiContainer"
+        );
+
+    const colors = [
+        "#d95f6b",
+        "#efb4b7",
+        "#e7ca62",
+        "#8aa56d",
+        "#f6d9c5"
+    ];
+
+    for(
+        let i = 0;
+        i < amount;
+        i++
+    ){
+
+        const piece =
+            document.createElement(
+                "span"
+            );
+
+        piece.className =
+            "confetti";
+
+        piece.style.background =
+            colors[
+                Math.floor(
+                    Math.random()
+                    * colors.length
+                )
+            ];
+
+        piece.style.left =
+            Math.random() * 100 + "%";
+
+        piece.style.width =
+            (5 + Math.random() * 6)
+            + "px";
+
+        piece.style.height =
+            (7 + Math.random() * 10)
+            + "px";
+
+        piece.style.transform =
+            `rotate(${Math.random() * 360}deg)`;
+
+        piece.style.animationDuration =
+            (2.2 + Math.random() * 1.5)
+            + "s";
+
+        piece.style.animationDelay =
+            (Math.random() * .25)
+            + "s";
+
+        container.appendChild(piece);
+
+        requestAnimationFrame(() => {
+
+            piece.classList.add("active");
+
+        });
+
+        setTimeout(() => {
+
+            piece.remove();
+
+        },4000);
+    }
+}
+
+
+/* =========================================================
+   PRELOAD ONLY EXISTING IMAGE FILES
+========================================================= */
+
+[
+    "happy-birthday.png",
+    "cherries.png",
+    "flower.png",
+    "heart.png",
+    "pinata-closed.png",
+    "pinata-open-v2.png"
+
+].forEach(src => {
+
+    const img =
+        new Image();
+
+    img.src = src;
+
+});
+
+
+/* =========================================================
+   TOUCH
+========================================================= */
+
+document.addEventListener(
+    "touchstart",
+    () => {},
+    {
+        passive:true
+    }
+);
+
+</script>
+
+</body>
+</html>
+
+
+
